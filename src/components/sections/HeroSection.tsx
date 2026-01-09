@@ -88,7 +88,12 @@ const HeroSection = () => {
               className="glass-card hover:bg-primary/10 px-8 py-6 rounded-2xl text-lg font-medium transition-all duration-300 hover:scale-105 border-primary/20"
               asChild
             >
-              <a href="/resume.pdf" download>
+              <a
+                href="/resume.pdf"
+                download="Mabusubhani-Shaik-Full-Stack-Developer-Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FileDown className="mr-2 w-5 h-5" />
                 Download Resume
               </a>
