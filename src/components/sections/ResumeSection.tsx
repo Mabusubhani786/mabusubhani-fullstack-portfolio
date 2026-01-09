@@ -200,7 +200,7 @@ const ResumeSection = () => {
             >
               <a
                 href="/resume.pdf"
-                download="Mabusubhani-Shaik-Full-Stack-Developer-Resume.pdf"
+                download="mabusubhani-fullstack-developer.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
