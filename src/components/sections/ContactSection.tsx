@@ -95,7 +95,7 @@ const ContactSection = () => {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -127,7 +127,7 @@ const ContactSection = () => {
 
     if (!CONTACT_FORM_ENDPOINT) {
       throw new Error(
-        "Google Sheet App URL is missing in environment variables"
+        "Google Sheet App URL is missing in environment variables",
       );
     }
 
@@ -206,23 +206,31 @@ const ContactSection = () => {
 
               <div className="space-y-6 mb-8">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                  <div
+                    key={index}
+                    className="flex items-start sm:items-center gap-3 sm:gap-4"
+                  >
+                    {/* Icon Container - Fixed size for all screens */}
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                       {item.icon}
                     </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">
+
+                    {/* Text Content */}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         {item.label}
                       </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="font-medium hover:text-primary transition-colors"
+                          className="font-medium hover:text-primary transition-colors block truncate sm:text-base"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="font-medium">{item.value}</p>
+                        <p className="font-medium truncate sm:text-base">
+                          {item.value}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -260,13 +268,6 @@ const ContactSection = () => {
               <form className="space-y-6">
                 {/* Name Field */}
                 <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="block font-medium"
-                    style={{ fontSize: "12px" }}
-                  >
-                    Your Name
-                  </label>
                   <label htmlFor="name" className="block font-medium text-sm">
                     Your Name <span className="text-red-500">*</span>
                   </label>
@@ -275,7 +276,7 @@ const ContactSection = () => {
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
@@ -313,13 +314,6 @@ const ContactSection = () => {
 
                 {/* Email Field */}
                 <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="block font-medium"
-                    style={{ fontSize: "12px" }}
-                  >
-                    Your Email
-                  </label>
                   <label htmlFor="email" className="block font-medium text-sm">
                     Your Email <span className="text-red-500">*</span>
                   </label>
@@ -328,7 +322,7 @@ const ContactSection = () => {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="Enter your email address"
                     value={formData.email}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
@@ -376,7 +370,7 @@ const ContactSection = () => {
                   <textarea
                     id="message"
                     name="message"
-                    placeholder="Hello! I would like to discuss a project with you..."
+                    placeholder="What would you like to discuss?"
                     value={formData.message}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
