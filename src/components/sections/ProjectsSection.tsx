@@ -24,7 +24,7 @@ const projects: Project[] = [
       "Shadcn/Ui",
       "JWT",
     ],
-    liveUrl: "https://feedo-ten.vercel.app",
+    liveUrl: "https://feedo-ten.vercel.app/signin?isDemoAccount=true",
     status: "live",
   },
   {
